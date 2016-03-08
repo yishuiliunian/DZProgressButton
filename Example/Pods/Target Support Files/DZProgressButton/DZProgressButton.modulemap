@@ -1,0 +1,6 @@
+framework module DZProgressButton {
+  umbrella header "DZProgressButton-umbrella.h"
+
+  export *
+  module * { export * }
+}
