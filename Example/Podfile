@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'DZProgressButton_Example', :exclusive => true do
+  pod 'DZProgressButton', :path => '../'
+end
+
+target 'DZProgressButton_Tests', :exclusive => true do
+  pod 'DZProgressButton', :path => '../'
+
+  pod 'FBSnapshotTestCase'
+end
