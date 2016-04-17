@@ -98,6 +98,14 @@
 - (void) __loadStateImage
 {
     UIImage* image = _imageCache[@(self.state)];
+    if (!image) {
+        for (NSNumber* key in _imageCache.allKeys) {
+            image = _imageCache[key];
+            if (image) {
+                break;
+            }
+        }
+    }
     _actionImageView.image = image;
 }
 - (void) endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
