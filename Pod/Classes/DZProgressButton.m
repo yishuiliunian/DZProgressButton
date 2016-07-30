@@ -27,6 +27,11 @@
     if (!self) {
         return self;
     }
+    return self;
+}
+
+- (void) __commonInit
+{
     _progressLineWitdth = 2;
     _progressColor = [UIColor blueColor];
     _imageView = [UIImageView new];
@@ -38,6 +43,24 @@
     _actionImageView = [UIImageView new];
     [self addSubview:_actionImageView];
     _imageCache = [NSMutableDictionary new];
+}
+
+- (instancetype) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (!self) {
+        return self;
+    }
+    [self __commonInit];
+    return self;
+}
+- (instancetype) initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return self;
+    }
+    [self __commonInit];
     return self;
 }
 
@@ -64,6 +87,12 @@
     [path closePath];
     [_progressLayer setPath:path.CGPath];
     _progressLayer.fillColor = self.progressColor.CGColor;
+    
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect:contentRect];
+    [[UIColor lightGrayColor] setFill];
+    [ovalPath fill];
+    
+    
 }
 
 - (void) layoutSubviews
