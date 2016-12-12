@@ -75,6 +75,10 @@
 
 - (void) showProgressWithAnimation:(BOOL)animated
 {
+    [self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect {
     CGFloat width = MIN(CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds));
     CGRect contentRect = CGRectCenter(self.bounds, CGSizeMake(width, width));
     width = width/2;
@@ -87,12 +91,10 @@
     [path closePath];
     [_progressLayer setPath:path.CGPath];
     _progressLayer.fillColor = self.progressColor.CGColor;
-    
+
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect:contentRect];
     [[UIColor lightGrayColor] setFill];
     [ovalPath fill];
-    
-    
 }
 
 - (void) layoutSubviews
